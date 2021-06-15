@@ -1,0 +1,24 @@
+
+<html lang="zh-cn">
+	<head>
+		<title>Oauth 授权桥接页</title>
+	</head>
+	<body>
+		如果长时间未跳转，请：<a href="" id="direct">点击继续</a>
+		<script>
+			function get(variable){
+			       var query = window.location.search.substring(1);
+			       var vars = query.split("&");
+			       for (var i=0;i<vars.length;i++) {
+			               var pair = vars[i].split("=");
+			               if(pair[0] == variable){return pair[1];}
+			       }
+			       return(false);
+			}
+			var url = get('state');
+			var code = get('code');
+			document.getElementById('direct').href = decodeURIComponent(url)+"?code="+code;
+			window.location = decodeURIComponent(url)+"?code="+code;
+		</script>
+	</body>
+</html>
